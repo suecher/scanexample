@@ -3,18 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <script src="http://cdn.bootcss.com/socket.io/1.4.5/socket.io.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+
     <title>Title</title>
     <script>
-        var socket = io.connect('http://localhost:3001');
-        socket.username = '0001';
-        socket.on('news',function(data){
-            console.log(data);
+        $(document).ready(function(){
+
+            var socket = io.connect('http://192.168.1.254:3001');
+                socket.currentUser = 'scan001';
+
+                socket.on('room1',function(data){
+                    alert(data);
+                });
+
+                $("#btn1").click(function(){
+
+
+
+                    socket.userId = $("#txt1").val();
+                    socket.on('news',function(data){
+                        console.log(data);
+                    });
+
+                    socket.emit('other event',{my:'data',username:$("#txt1").val()});
+
+                });
+
+                $("#btn2").click(function(){
+                    socket.emit('room1',{uid:'003',sendId:'001'});
+            });
         });
 
-        socket.emit('other event',{my:'data',username:'0001'});
+
     </script>
 </head>
 <body>
-
+    <h1>Chat</h1>
+    <input type="text" id="txt1">
+    <input type="button" id="btn1" value="确定">
+    <input type="button" id="btn2" value="发送数据到客户端">
 </body>
 </html>
