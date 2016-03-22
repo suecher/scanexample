@@ -1,2 +1,6 @@
 socket.io/node_modules
+socket.io/public/lib
 socket.io/.idea
+
+async/node_modules
+async/.idea
