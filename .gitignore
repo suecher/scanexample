@@ -4,3 +4,7 @@ socket.io/.idea
 
 async/node_modules
 async/.idea
+
+uploadfile/mode_modules
+uploadfile/.idea
+uploadfile/files
