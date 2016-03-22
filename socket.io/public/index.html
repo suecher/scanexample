@@ -10,15 +10,12 @@
         $(document).ready(function(){
 
             var socket = io.connect('http://192.168.1.254:3001');
-                socket.currentUser = 'scan001';
 
                 socket.on('room1',function(data){
                     alert(data);
                 });
 
                 $("#btn1").click(function(){
-
-
 
                     socket.userId = $("#txt1").val();
                     socket.on('news',function(data){
@@ -36,6 +33,7 @@
 
 
     </script>
+
 </head>
 <body>
     <h1>Chat</h1>
